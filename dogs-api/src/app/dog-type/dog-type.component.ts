@@ -1,35 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { ApiCallerService } from "../services/api-caller.service";
 
 @Component({
-  selector: 'app-dog-type',
-  templateUrl: './dog-type.component.html',
-  styleUrls: ['./dog-type.component.css']
+	selector: "app-dog-type",
+	templateUrl: "./dog-type.component.html",
+	styleUrls: ["./dog-type.component.css"],
 })
 export class DogTypeComponent implements OnInit {
-  dogImageUrl!: string;
-  breed!: string;
+	dogImageUrl!: string;
+	breed!: string;
+	subBreed!: string | null;
+	subBreedsList!: string[];
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+	constructor(
+		private route: ActivatedRoute,
+		private router: Router,
+		private apiCallerService: ApiCallerService,
+	) {}
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const breed = params.get('breed');
-      if (breed) {
-        this.breed = breed;
-        this.getDogImage(breed);
-      }
-    });
-  }
+	ngOnInit(): void {
+		this.route.params.subscribe((params) => {
+			this.breed = params["breed"];
+		});
+		this.getDogImage();
+		this.getSubBreed();
+	}
 
-  getDogImage(breed: string): void {
-    const apiUrl = `https://dog.ceo/api/breed/${breed}/images/random`;
+	getDogImage(): void {
+		if (this.breed) {
+			this.apiCallerService.getRandomImage(this.breed).subscribe({
+				next: (response: any) => {
+					this.dogImageUrl = response.message;
+				},
+				error: (error) => {
+					this.router.navigate(["/error-page"]);
+				},
+			});
+		}
+	}
 
-    this.http.get(apiUrl).subscribe((response: any) => {
-      this.dogImageUrl = response.message;
-    });
-  }
-
+	getSubBreed(): void {
+		this.apiCallerService.getSubBreed(this.breed).subscribe({
+			next: (response: any) => {
+				this.subBreedsList = response.message;
+			},
+			error: (error) => {
+				this.router.navigate(["/error-page"]);
+			},
+		});
+	}
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiCallerService } from "../services/api-caller.service";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-dogs-list",
@@ -7,24 +10,25 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DogsListComponent implements OnInit {
 	breedsArray: string[] = [];
-	url: string = "https://dog.ceo/api/breeds/list/all";
 
-	constructor() { }
+	constructor(
+		private apiCallerService: ApiCallerService,
+		private router: Router,
+		private http: HttpClient,
+	) {}
 
 	ngOnInit(): void {
-		fetch(this.url)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				return response.json();
-			})
-			.then((data) => {
+		this.fetchAllDogs();
+	}
+
+	fetchAllDogs(): void {
+		this.apiCallerService.getAllDogs().subscribe({
+			next: (data: any) => {
 				this.breedsArray = Object.keys(data.message);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+			},
+			error: (error) => {
+				this.router.navigate(["/error-page"]);
+			},
+		});
 	}
 }
-
