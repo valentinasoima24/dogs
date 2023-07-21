@@ -1,0 +1,10 @@
+<div *ngIf="dogImageUrl" class="text-center">
+	<h2>{{ breed }}</h2>
+	<img [src]="dogImageUrl" alt="Dog Image" />
+	<h2>{{ subBreed }}</h2>
+</div>
+<ul>
+	<li *ngFor="let subBreed of subBreedsList">
+		<a [routerLink]="['/sub-breed', breed, subBreed]"> {{ subBreed }} </a>
+	</li>
+</ul>
