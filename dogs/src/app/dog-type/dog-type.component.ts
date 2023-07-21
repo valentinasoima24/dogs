@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
 import { ApiCallerService } from "../services/api-caller.service";
 
 @Component({
@@ -18,7 +17,7 @@ export class DogTypeComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private apiCallerService: ApiCallerService,
-	) { }
+	) {}
 
 	ngOnInit(): void {
 		this.activatedRoute.params.subscribe((params) => {

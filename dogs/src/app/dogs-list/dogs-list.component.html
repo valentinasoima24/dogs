@@ -1,10 +1,10 @@
 <nav>
-    <ul>
-        <li *ngFor="let breed of breedList">
-          <a [routerLink]="['/dog-type', breed]" routerLinkActive="active" ariaCurrentWhenActive="page">
-            {{ breed }}
-       </a>
-        </li>
-    </ul>
+	<ul>
+		<li *ngFor="let breed of breedList">
+			<a [routerLink]="['/dog-type', breed]" routerLinkActive="active" ariaCurrentWhenActive="page">
+				{{ breed }}
+			</a>
+		</li>
+	</ul>
 </nav>
 <router-outlet></router-outlet>

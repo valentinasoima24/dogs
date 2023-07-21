@@ -14,7 +14,7 @@ export class SubBreedsComponent implements OnInit {
 	subBreedImage!: string;
 
 	constructor(
-		private apiCallerService:ApiCallerService,
+		private apiCallerService: ApiCallerService,
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 	) {}

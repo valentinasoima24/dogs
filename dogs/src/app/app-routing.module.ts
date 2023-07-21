@@ -6,17 +6,16 @@ import { SubBreedsComponent } from "./sub-breeds/sub-breeds.component";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'app', pathMatch: 'full' },
-  { path: 'app', component: DogsListComponent },
-  { path: 'error-page', component: ErrorPageComponent },
-  { path: 'dog-type/:breed', component: DogTypeComponent },
-  { path: 'sub-breed/:breed/:subBreed', component: SubBreedsComponent },
-  { path: '**', redirectTo: 'error-page' },
-
+	{ path: "", redirectTo: "app", pathMatch: "full" },
+	{ path: "app", component: DogsListComponent },
+	{ path: "error-page", component: ErrorPageComponent },
+	{ path: "dog-type/:breed", component: DogTypeComponent },
+	{ path: "sub-breed/:breed/:subBreed", component: SubBreedsComponent },
+	{ path: "**", redirectTo: "error-page" },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
