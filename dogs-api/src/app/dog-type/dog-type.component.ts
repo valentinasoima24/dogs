@@ -24,11 +24,11 @@ export class DogTypeComponent implements OnInit {
 		this.route.params.subscribe((params) => {
 			this.breed = params["breed"];
 		});
-		this.getDogImage();
-		this.getSubBreed();
+		this.prepareImage();
+		this.prepareBreed();
 	}
 
-	getDogImage(): void {
+	prepareImage(): void {
 		if (this.breed) {
 			this.apiCallerService.getRandomImage(this.breed).subscribe({
 				next: (response: any) => {
@@ -41,7 +41,7 @@ export class DogTypeComponent implements OnInit {
 		}
 	}
 
-	getSubBreed(): void {
+	prepareBreed(): void {
 		this.apiCallerService.getSubBreed(this.breed).subscribe({
 			next: (response: any) => {
 				this.subBreedsList = response.message;

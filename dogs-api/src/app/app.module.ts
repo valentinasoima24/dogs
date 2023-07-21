@@ -9,8 +9,6 @@ import { DogTypeComponent } from './dog-type/dog-type.component';
 import { SubBreedsComponent } from './sub-breeds/sub-breeds.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
-
-
 @NgModule({
 	declarations: [AppComponent, DogsListComponent, DogTypeComponent, SubBreedsComponent, ErrorPageComponent],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],

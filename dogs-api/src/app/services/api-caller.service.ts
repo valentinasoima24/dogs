@@ -13,11 +13,16 @@ export class ApiCallerService {
   getAllDogs(): Observable<any> {
     return this.httpClient.get(`${this.apiUrl}breeds/list/all`);
   }
+
   getRandomImage(breed: string): Observable<any> {
     return this.httpClient.get(`${this.apiUrl}breed/${breed}/images/random`);
   }
 
   getSubBreed(breed: string): Observable<any> {
-    return this.httpClient.get(this.apiUrl + `breed/${breed}/list`);
+    return this.httpClient.get(`${this.apiUrl}breed/${breed}/list`);
   }
+
+  getSubBreedImage(breed:string, subBreed:string):Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}breed/${breed}/${subBreed}/images/random`);
+  };
 }

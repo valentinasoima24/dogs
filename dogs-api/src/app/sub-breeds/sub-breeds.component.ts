@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ApiCallerService } from "../services/api-caller.service";
 
 @Component({
 	selector: "app-sub-breeds",
@@ -10,16 +11,16 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class SubBreedsComponent implements OnInit {
 	breed!: string;
 	subBreed!: string;
-	subBreedResult!: string;
+	subBreedImage!: string;
 
 	constructor(
-		private http: HttpClient,
+		private apiCallerService:ApiCallerService,
 		private router: Router,
-		private route: ActivatedRoute,
+		private activatedRoute: ActivatedRoute,
 	) {}
 
 	ngOnInit(): void {
-		this.route.params.subscribe((params) => {
+		this.activatedRoute.params.subscribe((params) => {
 			this.breed = params["breed"];
 			this.subBreed = params["subBreed"];
 			if (this.subBreed) {
@@ -29,10 +30,9 @@ export class SubBreedsComponent implements OnInit {
 	}
 
 	getSubBreed(): void {
-		const apiUrl = `https://dog.ceo/api/breed/${this.breed}/${this.subBreed}/images/random`;
-		this.http.get(apiUrl).subscribe({
+		this.apiCallerService.getSubBreedImage(this.breed, this.subBreed).subscribe({
 			next: (response: any) => {
-				this.subBreedResult = response.message;
+				this.subBreedImage = response.message;
 			},
 			error: (error: any) => {
 				this.router.navigate(["/error-page"]);

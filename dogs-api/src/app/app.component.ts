@@ -6,7 +6,4 @@ import { HttpClient } from "@angular/common/http"
 	templateUrl: "./app.component.html",
 	styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
-	title = "dogs-api";
-
-}
+export class AppComponent {}

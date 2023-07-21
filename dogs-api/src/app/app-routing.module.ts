@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'error-page', component: ErrorPageComponent },
   { path: 'dog-type/:breed', component: DogTypeComponent },
   { path: 'sub-breed/:breed/:subBreed', component: SubBreedsComponent },
-  { path: '**', redirectTo: 'app' },
+  { path: '**', redirectTo: 'error-page' },
 
 ];
 
