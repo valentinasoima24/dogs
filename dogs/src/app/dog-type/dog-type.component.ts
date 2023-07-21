@@ -15,13 +15,13 @@ export class DogTypeComponent implements OnInit {
 	subBreedsList!: string[];
 
 	constructor(
-		private route: ActivatedRoute,
+		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private apiCallerService: ApiCallerService,
-	) {}
+	) { }
 
 	ngOnInit(): void {
-		this.route.params.subscribe((params) => {
+		this.activatedRoute.params.subscribe((params) => {
 			this.breed = params["breed"];
 		});
 		this.prepareImage();
