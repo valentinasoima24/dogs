@@ -11,10 +11,11 @@ import { DogsListComponent } from "./dogs-list/dogs-list.component";
 import { DogTypeComponent } from "./dog-type/dog-type.component";
 import { SubBreedsComponent } from "./sub-breeds/sub-breeds.component";
 import { ErrorPageComponent } from "./error-page/error-page.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
 	declarations: [AppComponent, DogsListComponent, DogTypeComponent, SubBreedsComponent, ErrorPageComponent],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule, ButtonModule, TreeModule, CardModule],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, ButtonModule, TreeModule, CardModule, CommonModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
