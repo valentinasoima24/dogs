@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
+import { ButtonModule } from "primeng/button";
+import { TreeModule } from "primeng/tree";
+import { CardModule } from "primeng/card";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -11,7 +14,7 @@ import { ErrorPageComponent } from "./error-page/error-page.component";
 
 @NgModule({
 	declarations: [AppComponent, DogsListComponent, DogTypeComponent, SubBreedsComponent, ErrorPageComponent],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, ButtonModule, TreeModule, CardModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })

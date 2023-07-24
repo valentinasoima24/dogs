@@ -1,10 +1,6 @@
-<nav>
-	<ul>
-		<li *ngFor="let breed of breedList">
-			<a [routerLink]="['/dog-type', breed]" routerLinkActive="active" ariaCurrentWhenActive="page">
-				{{ breed }}
-			</a>
-		</li>
-	</ul>
-</nav>
+<p-tree [value]="breedList" selectionMode="single" [(selection)]="selectedBreed" (onNodeSelect)="onNodeSelect($event)">
+	<ng-template let-node pTemplate="default">
+		<span>{{ node.label }}</span>
+	</ng-template>
+</p-tree>
 <router-outlet></router-outlet>
