@@ -1,10 +1,14 @@
-<div *ngIf="dogImageUrl" class="text-center">
-	<h2>{{ breed }}</h2>
-	<img [src]="dogImageUrl" alt="Dog Image" />
-	<h2>{{ subBreed }}</h2>
-</div>
-<ul>
-	<li *ngFor="let subBreed of subBreedsList">
-		<a [routerLink]="['/sub-breed', breed, subBreed]"> {{ subBreed }} </a>
-	</li>
-</ul>
+<p-card>
+	<div *ngIf="dogImageUrl" class="text-center">
+		<p-button [routerLink]="['/app']" label="All dogs" class="p-button-success"></p-button>
+		<h2>{{ breed }}</h2>
+		<img [src]="dogImageUrl" alt="Dog Image" />
+		<h2>{{ subBreed }}</h2>
+	</div>
+	<p-tree [value]="subBreedsTree" selectionMode="single" [(selection)]="selectedSubBreed"
+		(onNodeSelect)="onNodeSelect($event)">
+		<ng-template let-node pTemplate="default">
+			<span>{{ node.label }}</span>
+		</ng-template>
+	</p-tree>
+</p-card>
