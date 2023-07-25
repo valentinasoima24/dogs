@@ -20,7 +20,7 @@ export class DogTypeComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private apiCallerService: ApiCallerService,
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.activatedRoute.params.subscribe((params) => {
@@ -56,6 +56,7 @@ export class DogTypeComponent implements OnInit {
 			},
 		});
 	}
+
 	onNodeSelect(event: any) {
 		this.router.navigate(["/sub-breed", this.breed, event.node.label]);
 	}

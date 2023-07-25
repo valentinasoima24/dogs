@@ -1,16 +1,12 @@
 <p-card>
 	<div *ngIf="dogImageUrl" class="text-center">
-		<a [routerLink]="['/app']"><p-button label="All dogs" class="p-button-success"></p-button></a>
+		<p-button [routerLink]="['/app']" label="All dogs" class="p-button-success"></p-button>
 		<h2>{{ breed }}</h2>
 		<img [src]="dogImageUrl" alt="Dog Image" />
 		<h2>{{ subBreed }}</h2>
 	</div>
-	<p-tree
-		[value]="subBreedsTree"
-		selectionMode="single"
-		[(selection)]="selectedSubBreed"
-		(onNodeSelect)="onNodeSelect($event)"
-	>
+	<p-tree [value]="subBreedsTree" selectionMode="single" [(selection)]="selectedSubBreed"
+		(onNodeSelect)="onNodeSelect($event)">
 		<ng-template let-node pTemplate="default">
 			<span>{{ node.label }}</span>
 		</ng-template>
